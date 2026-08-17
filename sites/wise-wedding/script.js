@@ -1,0 +1,9 @@
+const header=document.querySelector('.site-header');const toggle=document.querySelector('.menu-toggle');const nav=document.querySelector('.site-header nav');
+window.addEventListener('scroll',()=>header.classList.toggle('fixed',scrollY>window.innerHeight*.72),{passive:true});
+toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.classList.toggle('active',open);document.body.classList.toggle('menu-open',open);toggle.setAttribute('aria-expanded',open);toggle.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기')});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.classList.remove('active');document.body.classList.remove('menu-open')}));
+const slides=[...document.querySelectorAll('.hero-slide')];const count=document.querySelector('.slide-count');const progress=document.querySelector('.slider-controls i b');let active=0,timer;
+function showSlide(index){slides[active].classList.remove('active');active=(index+slides.length)%slides.length;slides[active].classList.add('active');count.textContent=String(active+1).padStart(2,'0');progress.style.width=`${(active+1)/slides.length*100}%`;clearInterval(timer);timer=setInterval(()=>showSlide(active+1),6000)}
+document.querySelector('.slide-next').addEventListener('click',()=>showSlide(active+1));document.querySelector('.slide-prev').addEventListener('click',()=>showSlide(active-1));timer=setInterval(()=>showSlide(active+1),6000);
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.11});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>{img.closest('.image-wrap,.hero-slide,.planner-image,.partner-card,.contact-image')?.classList.add('image-error')}));
