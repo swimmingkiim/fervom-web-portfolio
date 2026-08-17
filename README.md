@@ -5,8 +5,10 @@
 ## Routes
 
 - `/` — 전체 샘플 목차
-- `/sites/wise-wedding/` — 와이즈웨딩 리뉴얼 콘셉트
-- `/sites/hanple-wedding/` — 한플웨딩 리뉴얼 콘셉트
+- `/sites/wise-wedding/` — 와이즈웨딩 비공개 데모 경로
+- `/sites/hanple-wedding/` — 한플웨딩 비공개 데모 경로
+
+메인 페이지에는 공개 포트폴리오인 백아스튜디오와 백송 프로젝트만 노출합니다.
 
 새 샘플은 `sites/<project-name>/` 폴더에 추가하고 루트 `index.html`에 카드를 추가합니다.
 
